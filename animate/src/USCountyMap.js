@@ -2,6 +2,8 @@ import React from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import countyColor from './countyColor.js';
 import stateColor from './stateColor.js';
+import dayToDate from './dayToDate.js';
+
 
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
@@ -50,12 +52,12 @@ class USCountyMap extends React.Component {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
 
-      if (day < 11) {
+      if (day < 194) {
         this.setState({day: this.state.day + 1})
       } else {
         clearInterval(this.myInterval);
       }
-    }, 1000)
+    }, 400)
   }
 
   render() {
@@ -72,7 +74,7 @@ class USCountyMap extends React.Component {
           }
         </Geographies>
       </ComposableMap>
-      <p>{this.state.day}</p>
+      <p>{dayToDate(this.state.day)}</p>
       </div>
     )
   }
