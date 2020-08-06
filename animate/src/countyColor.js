@@ -1,45 +1,38 @@
-import React from 'react';
-import Papa from 'papaparse';
-import fs from 'fs';
-
-import COUNTY_DATA from './data/sample.json';
-const days = [
-  '2020-01-22',
-  '2020-01-23',
-  '2020-01-24',
-  '2020-01-25',
-  '2020-01-26',
-  '2020-01-27',
-  '2020-01-28',
-  '2020-01-29',
-  '2020-01-30',
-  '2020-01-31',
-  '2020-02-01',
-  '2020-02-02',
-]
+import COUNTY_DATA from './data/county-data-8-5.json';
+import dayToDate from './dayToDate.js';
 
 
 function countyColor(day, countyid, handleChange) {
   var fillColor;
-  const today = days[day];
-  const yesterday = days[day - 1];
+  const today = dayToDate(day);
+  const yesterday = dayToDate(day - 1);
 
   const dataForDate = COUNTY_DATA[today];
+  if (!dataForDate) {
+    // console.log("No data for", today);
+    return 'gray'
+  }
   const dataForCounty = dataForDate[countyid];
   if (!dataForCounty) {
-    console.log('No county data for', countyid, 'on', today)
+    // console.log('No county data for', countyid, 'on', today)
     return 'gray';
   }
   const population = dataForCounty['population'];
 
   let casesToday = dataForCounty['cumulativeConfirmedCases'];
-  // if (casesToday === null) {
-  //   return 'gray';
-  // }
-  casesToday = casesToday ? casesToday : Math.floor(Math.random() * 25);
+  if (casesToday === null) {
+    return '#00d475';
+  }
+  // casesToday = casesToday ? casesToday : Math.floor(Math.random() * 25);
 
-  let casesYesterday = COUNTY_DATA[yesterday][countyid]['cumulativeConfirmedCases'];
-  casesYesterday = casesYesterday ? casesYesterday : 0;
+  let dataForDateYesterday = COUNTY_DATA[yesterday]
+  if (!dataForDateYesterday) {
+    var casesYesterday = 0
+  } else {
+    var dataForCountyYesterday = dataForDateYesterday[countyid];
+    var casesYesterday = dataForCountyYesterday['cumulativeConfirmedCases'];
+    casesYesterday = casesYesterday ? casesYesterday : 0;
+  }
 
   const caseDensity = (casesToday - casesYesterday) / population * 100 * 1000;
 
@@ -48,14 +41,14 @@ function countyColor(day, countyid, handleChange) {
   // const cumulativeInfectedYesterday = dataByCounty.filter(data => data.date === "2020-05-14")[0].cumulativeInfected
   // const newCases = cumulativeInfected - cumulativeInfectedYesterday
   // get population!
-  if (caseDensity > 100) {
-    fillColor = 'red';
-  } else if (caseDensity > 50) {
-    fillColor = 'orange';
+  if (caseDensity > 25) {
+    fillColor = '#ff0034';
+  } else if (caseDensity > 10) {
+    fillColor = '#ff9600';
   } else if (caseDensity >= 1) {
-    fillColor = 'yellow';
+    fillColor = '#ffc900';
   } else if (caseDensity < 1) {
-    fillColor = 'green';
+    fillColor = '#00d475';
   };
   //handleChange(today);
   return fillColor;
