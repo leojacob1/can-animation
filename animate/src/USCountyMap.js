@@ -8,7 +8,12 @@ import dayToDate from './dayToDate.js';
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 import STATE_ABBRV from './data/stateAbbrv.json';
+<<<<<<< HEAD
 class State extends React.Component {
+=======
+
+class County extends React.Component {
+>>>>>>> ef9a8d5c45e2bfcc9112403cb12d6c93200a4be3
   constructor(props) {
     super(props);
     this.state = {color: "gray"}
@@ -30,6 +35,7 @@ class State extends React.Component {
       key={this.props.geo.rsmKey}
       geography={this.props.geo}
       fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
+      style={{"border-color": "red"}}
     />
   )
   }
@@ -67,7 +73,7 @@ class USCountyMap extends React.Component {
           {({ geographies }) =>
             geographies.map(geo => {
               return (
-                <State geo={geo} day={this.state.day} handleChange={this.handleChange}/>
+                <County geo={geo} day={this.state.day} handleChange={this.handleChange}/>
               );
             })
           }
