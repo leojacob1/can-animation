@@ -8,27 +8,12 @@ import dayToDate from './dayToDate.js';
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 import STATE_ABBRV from './data/stateAbbrv.json';
-<<<<<<< HEAD
-class State extends React.Component {
-=======
 
 class County extends React.Component {
->>>>>>> ef9a8d5c45e2bfcc9112403cb12d6c93200a4be3
   constructor(props) {
     super(props);
     this.state = {color: "gray"}
   }
-
-  // async componentDidMount() {
-  //   // var abbrv = STATE_ABBRV[this.props.geo.properties.name]
-  //   // abbrv = abbrv ? abbrv : this.props.geo.properties.name
-  //   // const color = await stateColor(abbrv);
-  //   // if (color) {
-  //   //   this.setState({color: color })
-  //   // }
-  //
-  //   this.setState({color: countyColor(this.props.geo.id)})
-  // }
   render() {
     return (
       <Geography
@@ -39,19 +24,13 @@ class County extends React.Component {
     />
   )
   }
-
 }
 
 class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
-    //this.handleChange = this.handleChange.bind(this);
     this.state = {day: 1, date: ''}
   }
-
-  // handleChange(date) {
-  //   this.setState({date: date})
-  // }
 
   componentDidMount() {
     this.myInterval = setInterval(() => {
