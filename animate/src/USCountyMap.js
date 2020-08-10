@@ -8,7 +8,6 @@ import dayToDate from './dayToDate.js';
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 import STATE_ABBRV from './data/stateAbbrv.json';
-
 class State extends React.Component {
   constructor(props) {
     super(props);
