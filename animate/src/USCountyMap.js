@@ -4,7 +4,6 @@ import countyColor from './countyColor.js';
 import stateColor from './stateColor.js';
 import dayToDate from './dayToDate.js';
 
-
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 import STATE_ABBRV from './data/stateAbbrv.json';
@@ -21,6 +20,7 @@ class County extends React.Component {
       geography={this.props.geo}
       fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
       style={{"border-color": "red"}}
+      strokeWidth={.1}
     />
   )
   }
@@ -52,7 +52,7 @@ class USCountyMap extends React.Component {
           {({ geographies }) =>
             geographies.map(geo => {
               return (
-                <County geo={geo} day={this.state.day} handleChange={this.handleChange}/>
+                <County geo={geo} day={this.state.day} handleChange={this.handleChange} opacity/>
               );
             })
           }
