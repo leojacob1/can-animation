@@ -36,7 +36,7 @@ class USCountyMap extends React.Component {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
 
-      if (day < 194) {
+      if (day < 163) {
         this.setState({day: this.state.day + 1})
       } else {
         clearInterval(this.myInterval);
@@ -47,7 +47,10 @@ class USCountyMap extends React.Component {
   render() {
     return (
     <div>
-    <ComposableMap data-tip="" projection="geoAlbersUsa" stroke={'white'}>
+    <h1 style={{fontSize:10 + 'em', marginBottom: -200 + 'px'}}>
+    {dayToDate(this.state.day).substring(5,7) + '/' + dayToDate(this.state.day).substring(8,10) + '/20'}
+    </h1>
+    <ComposableMap data-tip="" projection="geoAlbersUsa" stroke={'white'} style={{marginTop: -200 + 'px', width: 80+'%'}}>
         <Geographies geography={COUNTIES_JSON}>
           {({ geographies }) =>
             geographies.map(geo => {
@@ -58,7 +61,6 @@ class USCountyMap extends React.Component {
           }
         </Geographies>
       </ComposableMap>
-      <p>{dayToDate(this.state.day)}</p>
       </div>
     )
   }
