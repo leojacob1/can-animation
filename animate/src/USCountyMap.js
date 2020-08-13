@@ -47,10 +47,10 @@ class USCountyMap extends React.Component {
   render() {
     return (
     <div>
-    <h1 style={{fontSize:10 + 'em', marginBottom: -200 + 'px'}}>
+    <h1 style={{fontSize:2.5 + 'em'}}>
     {dayToDate(this.state.day).substring(5,7) + '/' + dayToDate(this.state.day).substring(8,10) + '/20'}
     </h1>
-    <ComposableMap data-tip="" projection="geoAlbersUsa" stroke={'white'} style={{marginTop: -200 + 'px', width: 80+'%'}}>
+    <ComposableMap data-tip="" projection="geoAlbersUsa" stroke={'white'} style={{width: 80+'%'}}>
         <Geographies geography={COUNTIES_JSON}>
           {({ geographies }) =>
             geographies.map(geo => {
