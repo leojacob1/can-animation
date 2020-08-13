@@ -2,3 +2,4 @@ covid-projections/
 data_scraper/
 benji.js
 animate/dataPrep.js
+.DS_Store
