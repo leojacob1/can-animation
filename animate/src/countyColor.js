@@ -34,13 +34,25 @@ function countyColor(day, countyid, handleChange) {
   const caseDensity = (casesToday - casesYesterday) / population * 100 * 1000;
 
   if (caseDensity > 25) {
-    fillColor = '#ff0034';
-  } else if (caseDensity > 10) {
-    fillColor = '#ff9600';
-  } else if (caseDensity >= 1) {
-    fillColor = '#ffc900';
-  } else if (caseDensity < 1) {
-    fillColor = '#00d475';
+    fillColor = '#FF0000'; //red
+  } 
+  else if (caseDensity > 20) {
+    fillColor = '#ff8000'; //dark orange
+  } 
+  else if (caseDensity > 15) {
+    fillColor = '#ff9500'; //orange
+  }
+  else if (caseDensity > 10) {
+    fillColor = '#ffc400'; //dark yellow
+  }
+  else if (caseDensity > 5) {
+    fillColor = '#f2ff00'; //light yellow
+  }
+  else if (caseDensity >= 1) {
+    fillColor = '#a6ff00'; //light green
+  } 
+  else if (caseDensity < 1) {
+    fillColor = '#00FF00'; //green
   };
 
   return fillColor;
