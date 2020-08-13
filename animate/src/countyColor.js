@@ -37,22 +37,22 @@ function countyColor(day, countyid, handleChange) {
     fillColor = '#FF0000'; //red
   } 
   else if (caseDensity > 20) {
-    fillColor = '#FF6000'; //orange
+    fillColor = '#ff8000'; //dark orange
   } 
   else if (caseDensity > 15) {
-    fillColor = '#FFB000'; //orange
+    fillColor = '#ff9500'; //orange
   }
   else if (caseDensity > 10) {
-    fillColor = '#FFFF00'; //orange
+    fillColor = '#ffc400'; //dark yellow
   }
   else if (caseDensity > 5) {
-    fillColor = '#B0FF00'; //orange
+    fillColor = '#f2ff00'; //light yellow
   }
   else if (caseDensity >= 1) {
-    fillColor = '#70FF00'; //light orange
+    fillColor = '#a6ff00'; //light green
   } 
   else if (caseDensity < 1) {
-    fillColor = '#10FF00'; //green
+    fillColor = '#00FF00'; //green
   };
 
   return fillColor;
