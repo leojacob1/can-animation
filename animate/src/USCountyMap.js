@@ -20,7 +20,7 @@ class County extends React.Component {
       geography={this.props.geo}
       fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
       style={{"border-color": "red"}}
-      strokeWidth={.1}
+      strokeWidth={.5}
     />
   )
   }
