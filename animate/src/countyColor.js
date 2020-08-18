@@ -91,38 +91,11 @@ function countyColor(day, countyid, handleChange) {
   } else if (gradientPercent < 0) {
     gradientPercent = 0
   }
-  // if (!(0 <= gradientPercent && 1 >= gradientPercent)) {
-  //   console.log(gradientPercent);
-  // }
 
   const color = gradient.rgbAt(gradientPercent);
   const colorString = `rgb(${color._r}, ${color._g}, ${color._b})`;
 
   return colorString
-
-  // if (newCaseDensityTrailingAverage > 25) {
-  //   fillColor = '#ff0034'; //red
-  // }
-  // // else if (newCaseDensityTrailingAverage > 20) {
-  // //   fillColor = '#ff8000'; //dark orange
-  // // }
-  // else if (newCaseDensityTrailingAverage > 10) {
-  //   fillColor = '#ff9600'; //orange
-  // }
-  // else if (newCaseDensityTrailingAverage >= 1) {
-  //   fillColor = '#ffc900'; //yellow
-  // }
-  // else if (newCaseDensityTrailingAverage < 1) {
-  //   fillColor = '#00d474'; //green
-  // } else {
-  //   // console.log("cumCasesArray", cumCasesArray);
-  //   // console.log("newCaseDensityArray", newCaseDensityArray);
-  //   // console.log("newCaseDensityTrailingAverage", newCaseDensityTrailingAverage);
-  //
-  //   return "#d4d4d4"; //ashy white
-  // };
-  //
-  // return fillColor;
 };
 
 export default countyColor;
