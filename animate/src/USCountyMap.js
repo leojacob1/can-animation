@@ -1,36 +1,45 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import styled from 'styled-components';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from "react-component-export-image";
+import GIFEncoder from 'gif-encoder-2';
 import countyColor from './countyColor.js';
 import stateColor from './stateColor.js';
 import dayToDate from './dayToDate.js';
+import fs from 'fs';
+import path from 'path';
 
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 import STATE_ABBRV from './data/stateAbbrv.json';
 
-const ColorFadeCounty = styled.g`
-  fill: ${(props) => props.color};
-  transition: fill 2s ease-in;
-`;
+const { createCanvas } = require('canvas');
+
+// const ColorFadeCounty = styled.g`
+//   fill: ${(props) => props.color};
+//   transition: fill 1s ease-in;
+//   onExited
+// `;
+
+
 
 class County extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {color: "gray", display: false}
+    this.state = {color: "gray", display: false};
   }
   render() {
     return (
-      <ColorFadeCounty color={countyColor(this.props.day, this.props.geo.id)}>
+      // <ColorFadeCounty color={countyColor(this.props.day, this.props.geo.id)}>
       <Geography
       key={this.props.geo.rsmKey}
       geography={this.props.geo}
-      //fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
+      fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
       strokeWidth={.5}
       />
-      </ColorFadeCounty>
+      // </ColorFadeCounty>
   )
   }
 }
@@ -38,22 +47,56 @@ class County extends React.Component {
 class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
+    this.encoder = new GIFEncoder(600, 400);
+    this.encoder.setDelay(500);
+    this.encoder.start();
     this.componentRef = React.createRef();
     this.state = {day: 1, date: ''}
   }
 
+  // clickHandler() {
+  //   const day = this.state.day;
+  //
+  //   if (day < 125) {
+  //     //exportComponentAsPNG(this.componentRef);
+  //     //console.log("printing component for day", day);
+  //     this.setState({day: this.state.day + 1})
+  //   }
+  // }
+
   componentDidMount() {
+    // if (this.state.day < 125) {
+    //   this.encoder.addFrame(this.componentRef);
+    //   this.setState({day: this.state.day + 1});
+    // } else {
+    //   this.encoder.finish();
+    //   const buffer = this.encoder.out.getData();
+    //
+    //   writeFile(path.join(__dirname, 'output', 'map.gif'), buffer, error => {
+    //     console.log("buffer", buffer);
+    //     console.log("error", error);
+    //   });
+    // }
+
+
     this.myInterval = setInterval(() => {
       const day = this.state.day;
 
-      if (day < 125) {
-        //exportComponentAsPNG(this.componentRef);
-        //console.log("printing component for day", day);
+      if (day < 5) {
+        this.encoder.addFrame(this.componentRef);
+
         this.setState({day: this.state.day + 1})
       } else {
+        this.encoder.finish();
+        const buffer = this.encoder.out.getData();
+
+        fs.writeFile(path.join(__dirname, 'output', 'map.gif'), buffer, error => {
+          console.log("buffer", buffer);
+          console.log("error", error);
+        });
         clearInterval(this.myInterval);
       }
-    }, 1000)
+    }, 10)
   }
 
   render() {

@@ -1,4 +1,4 @@
-import COUNTY_DATA from './data/county-data-8-5.json';
+import COUNTY_DATA from './data/county-history-data.json';
 import dayToDate from './dayToDate.js';
 import tinygradient from 'tinygradient';
 
@@ -13,36 +13,26 @@ function countyColor(day, countyid, handleChange) {
   var dataForCounty;
   var population;
   var casesToday;
-  const cumCasesArray = trailingDates.map(date => {
+  var newCaseDensityArray = trailingDates.map(date => {
     dataForDate = COUNTY_DATA[date];
     if (!dataForDate) {
-      return null
+      return null;
     }
     dataForCounty = dataForDate[countyid];
     if (!dataForCounty) {
-      return null
-    }
-    population = dataForCounty['population'];
-    casesToday = dataForCounty['cumulativeConfirmedCases'];
-    return {'casesToday': casesToday ? casesToday : 0, "population": population};
-  })
-
-  var newCaseDensityArray = cumCasesArray.map((cumCaseObj, index) => {
-    if (index && cumCaseObj && cumCasesArray[index-1]) {
-      let newCases = cumCaseObj.casesToday - cumCasesArray[index - 1].casesToday;
-      let newCaseDensity = newCases / cumCaseObj.population * 100 * 1000;
-      return newCaseDensity;
-    } else {
       return null;
     }
-  });
+    // population = dataForCounty['population'];
+    let caseDensity = dataForCounty['caseDensity'];
+    return caseDensity;
+  })
 
   // console.log('newCaseDensityArray', newCaseDensityArray);
 
   newCaseDensityArray = newCaseDensityArray.filter(x => x!== null);
-  if (newCaseDensityArray.length < 5) {
-    return "#d4d4d4";
-  }
+  // if (newCaseDensityArray.length < 5) {
+  //   return "#d4d4d4";
+  // }
   const newCaseDensityTrailingAverage = newCaseDensityArray.reduce((a,b) => a+b, 0) / newCaseDensityArray.length;
 
   // console.log('newCaseDensityTrailingAverage', newCaseDensityTrailingAverage);
@@ -89,7 +79,7 @@ function countyColor(day, countyid, handleChange) {
   if (gradientPercent > 1) {
     gradientPercent = 1;
   } else if (gradientPercent < 0) {
-    gradientPercent = 0
+    gradientPercent = 0;
   }
 
   const color = gradient.rgbAt(gradientPercent);
