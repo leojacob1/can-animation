@@ -1,17 +1,45 @@
 .header {
-  position: absolute;
-  width: 495px;
-  height: 47px;
-  left: 205px;
-  top: 40px;
-
-  font-family: Roboto;
+  /* font-family: Roboto; */
   font-style: normal;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 5.5em;
   line-height: 47px;
-  /* identical to box height */
+  margin-top: 1em;
+  margin-bottom: 1em;
 
 
   color: #000000;
+}
+
+.color-key {
+  align-self: center;
+  width: 15%;
+  margin-bottom: -15em;
+}
+
+.map {
+  width: 2%;
+}
+
+.date {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 5em;
+  line-height: 47px;
+  margin-top: -1.5em;
+  margin-bottom: 1.5em;
+  color: #4388f7;
+}
+
+.can-logo {
+  align-self: center;
+  width: 20%;
+  margin-bottom: 4em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
