@@ -1,6 +1,5 @@
 import COUNTY_DATA from './data/county-history-data.json';
 import dayToDate from './dayToDate.js';
-import smoothWithRollingAverage from './smoothing.js';
 import tinygradient from 'tinygradient';
 
 
@@ -35,16 +34,15 @@ function countyColor(day, countyid, handleChange) {
 
   var gradient = tinygradient([
     {color: '#00d474', pos: 0},
-    {color: '#ffc900', pos: 0.02},
-    {color: '#ff9600', pos: 0.2},
-    {color: '#ff0034', pos: 0.5},
-    {color: '#700000', pos: 1}
+    {color: '#ffc900', pos: 0.04},
+    {color: '#ff9600', pos: 0.4},
+    {color: '#ff0034', pos: 1}
   ]);
 
   if (!newCaseDensityTrailingAverage) {
     return '#00d474';
   }
-  var gradientPercent = newCaseDensityTrailingAverage / 50;
+  var gradientPercent = newCaseDensityTrailingAverage / 25;
   if (gradientPercent > 1) {
     gradientPercent = 1;
   } else if (gradientPercent < 0) {

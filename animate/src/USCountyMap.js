@@ -39,7 +39,7 @@ class USCountyMap extends React.Component {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
       if (day < 200) {
-        this.setState({day: this.state.day + 7})
+        this.setState({day: this.state.day + 3})
       } else {
         clearInterval(this.myInterval);
       }
