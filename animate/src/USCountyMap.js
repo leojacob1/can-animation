@@ -87,6 +87,14 @@ class USCountyMap extends React.Component {
       {`${dayToDate(this.state.day).substring(5,7)}/${dayToDate(this.state.day).substring(8,10)}/20`}
       </h1>
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo.png"} />
+      <img className="Timeline_No_Slider" src={process.env.PUBLIC_URL + "/Timeline_No_Slider.png"}/>
+      <img className="Timeline_Slider" src={process.env.PUBLIC_URL + "/Timeline_Slider.png"}
+      style={{
+            position: 'absolute',
+            top: 650,
+            left: 203 + ((this.state.day/219)*480),
+          }}
+        />
       </div>
     )
   }
