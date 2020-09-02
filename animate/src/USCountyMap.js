@@ -20,8 +20,8 @@ class County extends React.Component {
       key={this.props.geo.rsmKey}
       geography={this.props.geo}
       fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
-      //stroke="black"
-      strokeWidth={0.1}
+      stroke="white"
+      strokeWidth={0.3}
       />
   )
   }
@@ -31,30 +31,46 @@ class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {day: 1, date: ''}
+    this.state = {day: 1}
   }
 
 
   componentDidMount() {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
-      if (day < 200) {
-        this.setState({day: this.state.day + 3})
+      if (day < 199) {
+        this.setState({day: day + 3})
       } else {
+        console.log(dayToDate(day));
         clearInterval(this.myInterval);
       }
     }, 10)
   }
 
   render() {
-
+    let progress = 315 + ((this.state.day-15)/184)*273
+    if (progress > 588) {
+      progress = 588;
+    }
+    // } else if (progress < -31) {
+    //   progress = -1430;
+    // }
     return (
     <div className="container">
-    <h1 className="header">
-    New cases per 100k people
-    </h1>
-    <img className="color-key" src={process.env.PUBLIC_URL + "/color-key.png"} />
-    <ComposableMap clasName="map" data-tip="" projection="geoAlbersUsa" stroke={'white'} style={{width: 65+'%'}}>
+    <p className="header">
+    New cases
+    </p>
+    <p className="subHeader">
+    per 100k people
+    </p>
+    <img className="color-key" src={process.env.PUBLIC_URL + "/color-key-folder/vertical-color-key.svg"} />
+    <p className={`twentyfive threshold ${this.state.valid ? '' : 'error'}`}>25</p>
+    <p className={`ten threshold ${this.state.valid ? '' : 'error'}`}>10</p>
+    <p className={`one threshold ${this.state.valid ? '' : 'error'}`}>1</p>
+    <p className={`per100k ${this.state.valid ? '' : 'error'}`}>per 100k</p>
+
+    <div className="map">
+    <ComposableMap data-tip="" projection="geoAlbersUsa" >
 
       <Geographies geography={COUNTIES_JSON}>
         {({ geographies }) =>
@@ -73,20 +89,36 @@ class USCountyMap extends React.Component {
             key={geo.rsmKey}
             geography={geo}
             fill="teal"
-            stroke="black"
-            strokeWidth={1}
+            stroke="white"
+            strokeWidth={0.5}
             fillOpacity={0}
-            strokeOpacity={0.5}
+            strokeOpacity={1}
             />
           );
         })
       }
       </Geographies>
     </ComposableMap>
-      <h1 className="date">
-      {`${dayToDate(this.state.day).substring(5,7)}/${dayToDate(this.state.day).substring(8,10)}/20`}
-      </h1>
-      <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo.png"} />
+    </div>
+    <div>
+    {/*<img className={`startDate static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/start-date.svg"} />
+    <img className={`timelineLine static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/timeline-line.svg"} />
+    <img className={`endDate static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/end-date.svg"} />*/}
+    </div>
+    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
+    <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
+    <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Sep 1</p>
+    <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
+      <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
+    </div>
+    <div>
+    {/*
+    <img className={`dateLabel dynamic timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/date-label.svg"} />
+    <img className={`dateTick dynamic timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/date-tick.svg"} />
+    */}
+    </div>
+
+      <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
       </div>
     )
   }

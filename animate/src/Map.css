@@ -1,27 +1,121 @@
-.header {
-  /* font-family: Roboto; */
-  font-style: normal;
-  font-weight: bold;
-  font-size: 5.5em;
-  line-height: 47px;
-  margin-top: 1em;
-  margin-bottom: 1em;
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
 
-
-  color: #000000;
+* {
+  font-family: "Roboto" !important;
 }
 
-.color-key {
-  align-self: center;
-  width: 15%;
-  margin-bottom: -15em;
+.header {
+  /* font-family: Roboto; */
+  position: absolute;
+  width: 350px;
+  height: 84px;
+  left: 625px;
+  top: 30px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  text-align: center;
+  margin: auto;
+
+  /* White */
+
+  color: #FFFFFF;
+}
+
+.subHeader {
+  position: absolute;
+  width: 264px;
+  height: 38px;
+  left: 668px;
+  top: 121px;
+  margin: auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
+  /* identical to box height */
+
+  text-align: center;
+  text-transform: uppercase;
+
+  /* Grey 4 */
+
+  color: #828282;
 }
 
 .map {
-  width: 2%;
+  position: absolute;
+  width: 1148px;
+  height: 729px;
+  left: 226px;
+  top: 65px;
 }
 
-.date {
+.color-key {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+
+  position: absolute;
+  width: 32px;
+  height: 288px;
+  left: 1447px;
+  top: 340px;
+
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.threshold {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 1496px;
+  top: 373px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+
+  /* White */
+
+  color: #FFFFFF;
+}
+
+.ten {
+  top: 445px;
+}
+
+.one {
+  top: 517px;
+}
+
+.per100k {
+  position: absolute;
+  width: 88px;
+  height: 23px;
+  left: 1419px;
+  top: 627px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+
+  /* Grey 2 */
+
+  color: #E0E0E0;
+}
+
+/* .date {
   font-style: normal;
   font-weight: bold;
   font-size: 5em;
@@ -29,17 +123,116 @@
   margin-top: -1.5em;
   margin-bottom: 1.5em;
   color: #4388f7;
+} */
+
+.timeline {
+  position: absolute;
+  width: 4px;
+  height: 288px;
+  left: 101px;
+  top: 333px;
+  /* Grey 5 */
+
+  background: #4F4F4F;
+  border-radius: 99px;
 }
 
+.timelineDate {
+  position: absolute;
+  width: 60px;
+  height: 23px;
+  left: 72px;
+  top: 268px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  text-transform: uppercase;
+
+  /* Grey 2 */
+
+  color: #E0E0E0;
+}
+
+/* .startDate {
+  left: 28em;
+}
+*/
+
+.endDate {
+  top: 628px;
+  width: 106px;
+  left: 49px;
+}
+
+.dateLabel {
+  position: static;
+  width: 66px;
+  height: 28px;
+  left: 24px;
+  top: 12px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 28px;
+  text-transform: uppercase;
+
+  /* Black */
+
+  color: #000000;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  margin: 10px 0px;
+}
+
+.dateBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* padding: 12px 24px; */
+
+  position: absolute;
+  width: 114px;
+  height: 52px;
+  left: 45px;
+  top: 588px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 99px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* .dynamic {
+  position: relative;
+  margin-top: -145px;
+} */
+
 .can-logo {
-  align-self: center;
-  width: 20%;
-  margin-bottom: 4em;
+  position: absolute;
+  width: 260.32px;
+  height: 32px;
+  left: 1289px;
+  top: 825px;
+
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  width: 1600px;
+  height: 900px;
+
+  /* Black */
+
+  background: #000000;
 }

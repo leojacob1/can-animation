@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^7.2.1",
     "amd-loader": "0.0.8",
     "axios": "^0.19.2",
-    "browserfs": "^1.4.3",
     "browserify-fs": "^1.0.0",
     "canvas": "^2.6.1",
     "classnames": "^2.2.6",
