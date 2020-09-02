@@ -100,22 +100,11 @@ class USCountyMap extends React.Component {
       </Geographies>
     </ComposableMap>
     </div>
-    <div>
-    {/*<img className={`startDate static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/start-date.svg"} />
-    <img className={`timelineLine static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/timeline-line.svg"} />
-    <img className={`endDate static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/end-date.svg"} />*/}
-    </div>
     <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
     <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
     <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Sep 1</p>
     <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
       <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
-    </div>
-    <div>
-    {/*
-    <img className={`dateLabel dynamic timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/date-label.svg"} />
-    <img className={`dateTick dynamic timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/date-tick.svg"} />
-    */}
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
