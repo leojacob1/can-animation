@@ -1,5 +1,5 @@
 function dayToDate(day, option = false) {
-  const startDate = new Date(2020, 1, 14);
+  const startDate = new Date(2020, 2, 0);
   const newDateStamp = startDate.getTime() + day * 86400000;
   const newDate = new Date();
   newDate.setTime(newDateStamp);

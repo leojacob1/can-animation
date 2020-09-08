@@ -3,7 +3,8 @@ import dayToDate from './dayToDate.js';
 import tinygradient from 'tinygradient';
 
 
-function countyColor(day, countyid, handleChange) {
+function countyColor(day, countyid) {
+
   var fillColor;
   const trailingDates = [dayToDate(day-6), dayToDate(day-5), dayToDate(day-4), dayToDate(day-3), dayToDate(day-2), dayToDate(day-1), dayToDate(day)]
 
@@ -14,12 +15,14 @@ function countyColor(day, countyid, handleChange) {
   var newCaseDensityArray = trailingDates.map(date => {
     dataForDate = COUNTY_DATA[date];
     if (!dataForDate) {
+
       return null;
     }
     dataForCounty = dataForDate[countyid];
     if (!dataForCounty) {
       return null;
     }
+
     let caseDensity = dataForCounty['caseDensity'];
     return caseDensity;
   })

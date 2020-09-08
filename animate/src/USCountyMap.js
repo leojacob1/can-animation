@@ -30,25 +30,34 @@ class County extends React.Component {
 class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {day: 1}
+    this.startAnimation = this.startAnimation.bind(this);
+    this.state = {day: 1, complete: false}
   }
 
 
-  componentDidMount() {
+  startAnimation() {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
-      if (day < 199) {
-        this.setState({day: day + 3})
+      if (day < 185) {
+        this.setState({day: day + 1});
       } else {
-        console.log(dayToDate(day));
         clearInterval(this.myInterval);
       }
     }, 10)
+    // this.myInterval = setInterval(() => {
+    //   const day = this.state.day;
+    //   if (dayToDate(day, true) == "Aug 28") {
+    //     this.setState({day: day + 4});
+    //   } else if (day < 185) {
+    //     this.setState({day: day + 3});
+    //   } else {
+    //     clearInterval(this.myInterval);
+    //   }
+    // }, 10)
   }
 
   render() {
-    let progress = 315 + ((this.state.day-15)/184)*273
+    let progress = 315 + ((this.state.day)/185)*273
     if (progress > 588) {
       progress = 588;
     }
@@ -56,7 +65,7 @@ class USCountyMap extends React.Component {
     //   progress = -1430;
     // }
     return (
-    <div className="container">
+      <div className="container">
     <p className="header">
     New cases
     </p>
@@ -108,7 +117,10 @@ class USCountyMap extends React.Component {
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
+      <button onClick={this.startAnimation} style={{opacity: 0, cursor: "none"}}>start animation</button>
+
       </div>
+
     )
   }
 }
