@@ -5,20 +5,17 @@
 }
 
 .header {
-
   position: absolute;
-  width: 584px;
-  height: 141px;
-  left: 158px;
+  width: 428px;
+  height: 103px;
+  left: 386px;
   top: -40px;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 120px;
-  line-height: 141px;
-  /* identical to box height */
-
+  font-size: 88px;
+  line-height: 103px;
   text-align: center;
 
   /* White */
@@ -27,34 +24,17 @@
 }
 
 .subHeader {
-  /* position: absolute;
+  position: absolute;
   width: 264px;
   height: 38px;
-  left: 668px;
-  top: 121px;
-  margin: auto;
+  left: 468px;
+  top: 120px;
+
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
   line-height: 37px;
-
-  text-align: center;
-  text-transform: uppercase;
-
-
-  color: #828282; */
-  position: absolute;
-  width: 330px;
-  height: 47px;
-  left: 286px;
-  top: 185px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 40px;
-  line-height: 47px;
   /* identical to box height */
 
   text-align: center;
@@ -67,10 +47,10 @@
 
 .map {
   position: absolute;
-  width: 868px;
-  height: 596.17px;
-  left: 16px;
-  top: 440px;
+  width: 1040px;
+  height: 660.42px;
+  left: 80px;
+  top: 230px;
 }
 
 /* .color-key-box {
@@ -85,9 +65,8 @@
   position: absolute;
   width: 288px;
   height: 80px;
-  left: 306px;
-  top: 350px;
-
+  left: 456px;
+  top: 230px;
 }
 
 
@@ -102,13 +81,13 @@ margin-bottom: 1.5em;
 color: #4388f7;
 } */
 
-/* .timeline-box {
+.timeline-box {
   position: absolute;
-width: 745px;
-height: 52px;
-left: 78px;
-top: 1218px;
-} */
+  width: 745px;
+  height: 52px;
+  left: 130px;
+  top: -190px;
+}
 
 .timeline {
   position: absolute;
@@ -126,7 +105,7 @@ top: 1218px;
 
 .timelineDate {
   position: absolute;
-  width: 60px;
+  width: 64px;
   height: 23px;
   top: 1205px;
 
@@ -140,6 +119,8 @@ top: 1218px;
   /* Grey 2 */
 
   color: #E0E0E0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .startDate {
@@ -205,10 +186,10 @@ margin-top: -145px;
 
 .can-logo {
   position: absolute;
-  width: 400px;
+  width: 390.49px;
   height: 48px;
-  left: 255px;
-  top: 1420px;
+  left: 405px;
+  top: 1110px;
 
 
   /* transform: matrix(1, 0, 0, -1, 0, 0); */
@@ -216,13 +197,10 @@ margin-top: -145px;
 
 .container {
   position: relative;
-  width: 900px;
-  height: 1600px;
+  width: 1200px;
+  height: 1200px;
 
   /* Black */
 
   background: #000000;
-  cursor: none;
-  /* transform: rotate(90deg); */
-  /* left: 700px; */
 }
