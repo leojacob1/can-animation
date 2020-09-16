@@ -96,11 +96,15 @@ class USCountyMap extends React.Component {
       </Geographies>
     </ComposableMap>
     </div>
-    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
-    <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
+    <div className="timeline-box">
     <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Sep 1</p>
-    <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
-      <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
+    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
+
+      <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/horizontal-timeline.svg"} />
+
+      <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
+        <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
+      </div>
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />

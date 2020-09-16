@@ -5,28 +5,12 @@
 }
 
 .header {
-  /* font-family: Roboto; */
-  /* position: absolute;
-  width: 350px;
-  height: 84px;
-  left: 625px;
-  top: 30px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 72px;
-  line-height: 84px;
-  text-align: center;
-  margin: auto; */
-
-  /* White */
 
   position: absolute;
   width: 584px;
   height: 141px;
   left: 158px;
-  top: 86px;
+  top: -40px;
 
   font-family: Roboto;
   font-style: normal;
@@ -64,7 +48,7 @@
   width: 330px;
   height: 47px;
   left: 286px;
-  top: 231px;
+  top: 185px;
 
   font-family: Roboto;
   font-style: normal;
@@ -86,7 +70,7 @@
   width: 868px;
   height: 596.17px;
   left: 16px;
-  top: 502px;
+  top: 440px;
 }
 
 /* .color-key-box {
@@ -106,52 +90,7 @@
 
 }
 
-.threshold {
-  position: absolute;
-  width: 14px;
-  height: 28px;
-  left: 371px;
-  top: 402px;
 
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-  text-align: center;
-  text-transform: uppercase;
-
-  /* White */
-
-  color: #FFFFFF;
-}
-
-.ten {
-  left: 436px;
-}
-
-.twentyfive {
-  left: 508px;
-}
-
-.per100k {
-  position: absolute;
-  width: 88px;
-  height: 23px;
-  left: 1419px;
-  top: 627px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 23px;
-  text-transform: uppercase;
-
-  /* Grey 2 */
-
-  color: #E0E0E0;
-}
 
 /* .date {
 font-style: normal;
@@ -163,31 +102,39 @@ margin-bottom: 1.5em;
 color: #4388f7;
 } */
 
+/* .timeline-box {
+  position: absolute;
+width: 745px;
+height: 52px;
+left: 78px;
+top: 1218px;
+} */
+
 .timeline {
   position: absolute;
   width: 4px;
-  height: 288px;
-  left: 101px;
-  top: 333px;
+  height: 560px;
+  left: 450px;
+  top: 955px;
+
   /* Grey 5 */
 
   background: #4F4F4F;
   border-radius: 99px;
+  transform: rotate(-90deg);
 }
 
 .timelineDate {
   position: absolute;
   width: 60px;
   height: 23px;
-  left: 72px;
-  top: 268px;
+  top: 1205px;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 23px;
-  text-align: center;
   text-transform: uppercase;
 
   /* Grey 2 */
@@ -195,15 +142,16 @@ color: #4388f7;
   color: #E0E0E0;
 }
 
-/* .startDate {
-left: 28em;
+.startDate {
+  left: 78px;
+  text-align: right;
+
 }
-*/
+
 
 .endDate {
-  top: 628px;
-  width: 106px;
-  left: 49px;
+  left: 770px;
+
 }
 
 .dateLabel {
@@ -241,8 +189,8 @@ left: 28em;
   position: absolute;
   width: 114px;
   height: 52px;
-  left: 45px;
-  top: 588px;
+  left: 147px;
+  top: 1210px !important;
   background: #FFFFFF;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   border-radius: 99px;
@@ -257,10 +205,11 @@ margin-top: -145px;
 
 .can-logo {
   position: absolute;
-  width: 260.32px;
-  height: 32px;
-  left: 1289px;
-  top: 825px;
+  width: 400px;
+  height: 48px;
+  left: 255px;
+  top: 1420px;
+
 
   /* transform: matrix(1, 0, 0, -1, 0, 0); */
 }
