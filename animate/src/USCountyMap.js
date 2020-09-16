@@ -19,7 +19,7 @@ class County extends React.Component {
       <Geography
       key={this.props.geo.rsmKey}
       geography={this.props.geo}
-      fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
+      fill={countyColor(this.props.day, this.props.geo.id)}
       stroke="white"
       strokeWidth={0.3}
       />
@@ -31,7 +31,7 @@ class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
     this.startAnimation = this.startAnimation.bind(this);
-    this.state = {day: 1, complete: false}
+    this.state = {day: 1}
   }
 
 
@@ -44,16 +44,6 @@ class USCountyMap extends React.Component {
         clearInterval(this.myInterval);
       }
     }, 10)
-    // this.myInterval = setInterval(() => {
-    //   const day = this.state.day;
-    //   if (dayToDate(day, true) == "Aug 28") {
-    //     this.setState({day: day + 4});
-    //   } else if (day < 185) {
-    //     this.setState({day: day + 3});
-    //   } else {
-    //     clearInterval(this.myInterval);
-    //   }
-    // }, 10)
   }
 
   render() {
@@ -72,11 +62,8 @@ class USCountyMap extends React.Component {
     <p className="subHeader">
     per 100k people
     </p>
-    <img className="color-key" src={process.env.PUBLIC_URL + "/color-key-folder/vertical-color-key.svg"} />
-    <p className={`twentyfive threshold ${this.state.valid ? '' : 'error'}`}>25</p>
-    <p className={`ten threshold ${this.state.valid ? '' : 'error'}`}>10</p>
-    <p className={`one threshold ${this.state.valid ? '' : 'error'}`}>1</p>
-    <p className={`per100k ${this.state.valid ? '' : 'error'}`}>per 100k</p>
+    <img className="color-key" src={process.env.PUBLIC_URL + "/horizontal-color-key.svg"} />
+
 
     <div className="map">
     <ComposableMap data-tip="" projection="geoAlbersUsa" >
