@@ -47,7 +47,9 @@ class USCountyMap extends React.Component {
   }
 
   render() {
-    let progress = 147 + ((this.state.day)/185)*497
+    const startPx = 147
+    const endPx = 644
+    let progress = startPx + ((this.state.day)/185)*(endPx-startPx)
     if (progress > 588) {
       progress = 588;
     }
