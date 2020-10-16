@@ -1,4 +1,4 @@
-import COUNTY_DATA from './data/county-history-data.json';
+import COUNTY_DATA from './data/county-history-data3.json';
 import dayToDate from './dayToDate.js';
 import tinygradient from 'tinygradient';
 
