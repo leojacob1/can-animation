@@ -117,7 +117,7 @@ class USCountyMap extends React.Component {
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
-      <button onClick={this.startAnimation} style={{opacity: 0, cursor: "none"}}>start animation</button>
+      <button onClick={this.startAnimation} style={{opacity: 10, cursor: "none"}}>START ANIMATION</button>
 
       </div>
 
