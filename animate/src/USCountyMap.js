@@ -32,7 +32,7 @@ class USCountyMap extends React.Component {
     super(props);
     this.startAnimation = this.startAnimation.bind(this);
 
-    this.state = {day: 240, complete: false}
+    this.state = {day: 240, complete: false} //1 = march 1
 
   }
 
@@ -116,11 +116,7 @@ class USCountyMap extends React.Component {
     </div>
     <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Aug 15</p>
     <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
-<<<<<<< HEAD
     <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Oct 26</p>
-=======
-    <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Oct 15</p>
->>>>>>> 8315b213a444b6a3ca3c570e6d8fa953320008ff
     <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
       <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
     </div>
