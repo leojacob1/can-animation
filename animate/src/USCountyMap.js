@@ -31,13 +31,16 @@ class USCountyMap extends React.Component {
   constructor(props) {
     super(props);
     this.startAnimation = this.startAnimation.bind(this);
+
     this.state = {day: 240, complete: false}
+
   }
 
 
   startAnimation() {
     this.myInterval = setInterval(() => {
       const day = this.state.day;
+
       if (day < 240) { //days since mar 1
         this.setState({day: day + 1});
       } else {
@@ -57,7 +60,9 @@ class USCountyMap extends React.Component {
   }
 
   render() {
+
     let progress = 315 + ((this.state.day)/240)*273 //days since mar 1
+
     if (progress > 588) {
       progress = 588;
     }
@@ -109,9 +114,13 @@ class USCountyMap extends React.Component {
       </Geographies>
     </ComposableMap>
     </div>
-    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
+    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Aug 15</p>
     <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
+<<<<<<< HEAD
     <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Oct 26</p>
+=======
+    <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Oct 15</p>
+>>>>>>> 8315b213a444b6a3ca3c570e6d8fa953320008ff
     <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
       <p className={'dateLabel'}>{`${dayToDate(this.state.day, true)}`}</p>
     </div>
