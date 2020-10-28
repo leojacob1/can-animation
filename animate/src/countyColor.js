@@ -1,51 +1,50 @@
-import COUNTY_DATA from './data/county-history-data.json';
+import STATE_DATA from './data/state-history-data.json';
 import dayToDate from './dayToDate.js';
 import tinygradient from 'tinygradient';
 
 
-function countyColor(day, countyid) {
+function stateColor(day, stateid) {
 
   var fillColor;
   const trailingDates = [dayToDate(day-6), dayToDate(day-5), dayToDate(day-4), dayToDate(day-3), dayToDate(day-2), dayToDate(day-1), dayToDate(day)]
 
   var dataForDate;
-  var dataForCounty;
+  var dataForState;;
   var population;
-  var casesToday;
-  var newCaseDensityArray = trailingDates.map(date => {
-    dataForDate = COUNTY_DATA[date];
+  var infectionRateArray = trailingDates.map(date => {
+    dataForDate = STATE_DATA[date];
     if (!dataForDate) {
-
       return null;
     }
-    dataForCounty = dataForDate[countyid];
-    if (!dataForCounty) {
+    dataForState = dataForDate[stateid];
+    if (!dataForState) {
       return null;
     }
 
-    let caseDensity = dataForCounty['caseDensity'];
-    return caseDensity;
+    let infectionRate = dataForState['infectionRate'];
+    return infectionRate;
   })
 
 
-  newCaseDensityArray = newCaseDensityArray.filter(x => x!== null);
+  infectionRateArray = infectionRateArray.filter(x => x!== null);
   // if (newCaseDensityArray.length < 5) {
   //   return "#d4d4d4";
   // }
-  const newCaseDensityTrailingAverage = newCaseDensityArray.reduce((a,b) => a+b, 0) / newCaseDensityArray.length;
+  const infectionRateTrailingAverage = infectionRateArray.reduce((a,b) => a+b, 0) / infectionRateArray.length;
 
 
   var gradient = tinygradient([
     {color: '#00d474', pos: 0},
-    {color: '#ffc900', pos: 0.04},
-    {color: '#ff9600', pos: 0.4},
+    {color: '#ffc900', pos: 0.6428},
+    {color: '#ff9600', pos: 0.7857},
     {color: '#ff0034', pos: 1}
   ]);
 
-  if (!newCaseDensityTrailingAverage) {
-    return '#00d474';
+
+  if (!infectionRateTrailingAverage) {
+    return '#bfbfbf';
   }
-  var gradientPercent = newCaseDensityTrailingAverage / 25;
+  var gradientPercent = infectionRateTrailingAverage / 1.4;
   if (gradientPercent > 1) {
     gradientPercent = 1;
   } else if (gradientPercent < 0) {
@@ -58,4 +57,4 @@ function countyColor(day, countyid) {
   return colorString
 };
 
-export default countyColor;
+export default stateColor;

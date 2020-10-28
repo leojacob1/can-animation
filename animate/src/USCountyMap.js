@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Map.css';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import countyColor from './countyColor.js';
+import stateColor from './countyColor.js';
 import dayToDate from './dayToDate.js';
 import path from 'path';
 import COUNTIES_JSON from './data/counties-10m.json';
 import STATES_JSON from './data/states-10m.json';
 
 
-class County extends React.Component {
+class State extends React.Component {
   constructor(props) {
     super(props);
     this.state = {color: "gray", display: false};
@@ -19,7 +19,7 @@ class County extends React.Component {
       <Geography
       key={this.props.geo.rsmKey}
       geography={this.props.geo}
-      fill={countyColor(this.props.day, this.props.geo.id, this.props.handleChange)}
+      fill={stateColor(this.props.day, this.props.geo.id, this.props.handleChange)}
       stroke="white"
       strokeWidth={0.3}
       />
@@ -32,31 +32,24 @@ class USCountyMap extends React.Component {
     super(props);
     this.startAnimation = this.startAnimation.bind(this);
 
-    this.state = {day: 240, complete: false} //1 = march 1
+    this.state = {day: 154, complete: false} //1 = march 1
 
   }
 
 
   startAnimation() {
+    console.log("startAnimation")
     this.myInterval = setInterval(() => {
       const day = this.state.day;
 
       if (day < 240) { //days since mar 1
+        console.log("set new day")
         this.setState({day: day + 1});
       } else {
+        console.log("clear interval")
         clearInterval(this.myInterval);
       }
-    }, 10)
-    // this.myInterval = setInterval(() => {
-    //   const day = this.state.day;
-    //   if (dayToDate(day, true) == "Aug 28") {
-    //     this.setState({day: day + 4});
-    //   } else if (day < 185) {
-    //     this.setState({day: day + 3});
-    //   } else {
-    //     clearInterval(this.myInterval);
-    //   }
-    // }, 10)
+    }, 175)
   }
 
   render() {
@@ -72,25 +65,22 @@ class USCountyMap extends React.Component {
     return (
       <div className="container">
     <p className="header">
-    New cases
+    Infection Rate
     </p>
-    <p className="subHeader">
-    per 100k people
-    </p>
+
     <img className="color-key" src={process.env.PUBLIC_URL + "/color-key-folder/vertical-color-key.svg"} />
-    <p className={`twentyfive threshold ${this.state.valid ? '' : 'error'}`}>25</p>
-    <p className={`ten threshold ${this.state.valid ? '' : 'error'}`}>10</p>
-    <p className={`one threshold ${this.state.valid ? '' : 'error'}`}>1</p>
-    <p className={`per100k ${this.state.valid ? '' : 'error'}`}>per 100k</p>
+    <p className={`twentyfive threshold ${this.state.valid ? '' : 'error'}`}>1.4</p>
+    <p className={`ten threshold ${this.state.valid ? '' : 'error'}`}>1.1</p>
+    <p className={`one threshold ${this.state.valid ? '' : 'error'}`}>0.9</p>
 
     <div className="map">
     <ComposableMap data-tip="" projection="geoAlbersUsa" >
 
-      <Geographies geography={COUNTIES_JSON}>
+      <Geographies geography={STATES_JSON}>
         {({ geographies }) =>
           geographies.map(geo => {
             return (
-              <County geo={geo} day={this.state.day} opacity/>
+              <State geo={geo} day={this.state.day} opacity/>
             );
           })
         }
@@ -114,7 +104,7 @@ class USCountyMap extends React.Component {
       </Geographies>
     </ComposableMap>
     </div>
-    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Aug 15</p>
+    <p className={`startDate timelineDate ${this.state.valid ? '' : 'error'}`} >Mar 1</p>
     <img className={`static timeline ${this.state.valid ? '' : 'error'}`} src={process.env.PUBLIC_URL + "/vertical-timeline.svg"} />
     <p className={`endDate timelineDate ${this.state.valid ? '' : 'error'}`}>Oct 26</p>
     <div className={`dateBox ${this.state.valid ? '' : 'error'}`} style={{top: progress + 'px'}}>
@@ -122,7 +112,7 @@ class USCountyMap extends React.Component {
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
-      <button onClick={this.startAnimation} style={{opacity: 10, cursor: "none"}}>START ELONGATED AND STRETCHED AND OVERSIZED TO ACCOMODATED NEW YORK STATE'S ANIMATION ANIMATION</button>
+      <button onClick={this.startAnimation} style={{opacity: 0, cursor: "none"}}>Start</button>
 
       </div>
 
