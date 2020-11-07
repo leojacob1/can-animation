@@ -1,12 +1,12 @@
 import React from 'react';
-import USCountyMap from './USCountyMap';
+import MapSelector from './MapSelector.js';
 
-import './App.css';
+import '../styles/App.css';
 
 function App() {
   return (
     <div className="App">
-      <USCountyMap />
+      <MapSelector />
     </div>
   );
 }
