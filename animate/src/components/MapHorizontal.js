@@ -10,7 +10,7 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapHorizontal = ({day, progress, startAnimation, startDay, endDay}) => {
+const MapHorizontal = ({day, progress, startDay, endDay}) => {
   console.log(progress)
   let progressPx = 315 + progress*(588 - 315)
   console.log(progressPx)
@@ -72,7 +72,6 @@ const MapHorizontal = ({day, progress, startAnimation, startDay, endDay}) => {
     </div>
 
       <img className="can-logo-horizontal" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
-      <button onClick={startAnimation} style={{opacity: 0, cursor: "none"}}>start animation</button>
 
       </div>
 

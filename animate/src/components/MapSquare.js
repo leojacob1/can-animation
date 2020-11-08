@@ -10,7 +10,7 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapSquare = ({day, progress, startAnimation, startDay, endDay}) => (
+const MapSquare = ({day, progress, startDay, endDay}) => (
       <div className="container">
     <p className="header">
     New cases
@@ -65,7 +65,6 @@ const MapSquare = ({day, progress, startAnimation, startDay, endDay}) => (
     </div>
 
       <img className="can-logo" src={process.env.PUBLIC_URL + "/can-logo-alt.svg"} />
-      <button onClick={startAnimation} style={{opacity: 0, cursor: "none"}}>start animation</button>
 
       </div>
 

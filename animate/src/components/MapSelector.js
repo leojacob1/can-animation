@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import MapSquare from './MapSquare.js';
 import MapHorizontal from './MapHorizontal.js';
 import ControlPanel from './ControlPanel.js';
+import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
+
 
 
 class MapSelector extends React.Component {
@@ -14,7 +16,7 @@ class MapSelector extends React.Component {
       day: null,
       formData: {
         dimension: null,
-        assetType: "animation",
+        assetType: null,
         dataType: null,
         startDate: null,
         endDate: null
@@ -66,7 +68,6 @@ class MapSelector extends React.Component {
             <MapSquare
               day={this.state.day}
               progress={progress}
-              startAnimation={this.startAnimation}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
             />
@@ -75,12 +76,14 @@ class MapSelector extends React.Component {
             <MapHorizontal
               day={this.state.day}
               progress={progress}
-              startAnimation={this.startAnimation}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
             />
           }
         <ControlPanel handleSubmit={this.handleFormSubmit} />
+        {this.state.formData.assetType === "animation" &&
+          <Button primary label="Start Animation" onClick={() => this.startAnimation()} />
+        }
       </div>
     )
   }
