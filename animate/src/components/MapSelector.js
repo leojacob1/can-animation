@@ -80,10 +80,11 @@ class MapSelector extends React.Component {
               endDay={this.state.endDay}
             />
           }
-        <ControlPanel handleSubmit={this.handleFormSubmit} />
-        {this.state.formData.assetType === "animation" &&
-          <Button primary label="Start Animation" onClick={() => this.startAnimation()} />
-        }
+        <ControlPanel
+          handleSubmit={this.handleFormSubmit}
+          startAnimation={this.state.formData.assetType === "animation" ? this.startAnimation : null}
+        />
+
       </div>
     )
   }

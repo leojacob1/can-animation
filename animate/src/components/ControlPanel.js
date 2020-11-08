@@ -74,7 +74,7 @@ const MapSettingsForm = ({handleSubmit}) => {
   )
 }
 
-const ControlPanel = ({handleSubmit}) => (
+const ControlPanel = ({handleSubmit, startAnimation}) => (
   <Grommet theme={theme}>
     <Box
       direction="column"
@@ -83,6 +83,9 @@ const ControlPanel = ({handleSubmit}) => (
       width="medium"
     >
       <MapSettingsForm handleSubmit={handleSubmit}/>
+      {startAnimation &&
+        <Button primary label="Start Animation" margin="medium" onClick={() => startAnimation()} />
+      }
     </Box>
   </Grommet>
 )
