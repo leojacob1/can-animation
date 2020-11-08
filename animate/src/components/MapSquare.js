@@ -10,7 +10,7 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapSquare = ({day, progress, startAnimation}) => (
+const MapSquare = ({day, progress, startAnimation, startDay, endDay}) => (
       <div className="container">
     <p className="header">
     New cases
@@ -54,12 +54,12 @@ const MapSquare = ({day, progress, startAnimation}) => (
     </div>
     <div className="timeline-box">
 
-    <p className={`endDate timelineDate`}>Oct 15</p> //end date text
-    <p className={`startDate timelineDate`} >Mar 1</p>
+    <p className={`endDate timelineDate`}>{dayToDate(endDay, true)}</p> //end date text
+    <p className={`startDate timelineDate`} >{dayToDate(startDay, true)}</p>
 
       <img className={`static timeline`} src={process.env.PUBLIC_URL + "/horizontal-timeline.svg"} />
 
-      <div className={`dateBox`} style={{left: progress + 'px'}}>
+      <div className={`dateBox`} style={{left: (147 + progress*(644 - 147)) + 'px'}}>
         <p className={'dateLabel'}>{`${dayToDate(day, true)}`}</p>
       </div>
     </div>

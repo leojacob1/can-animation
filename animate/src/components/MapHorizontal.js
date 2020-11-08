@@ -10,7 +10,11 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapHorizontal = ({day, progress, startAnimation}) => (
+const MapHorizontal = ({day, progress, startAnimation, startDay, endDay}) => {
+  console.log(progress)
+  let progressPx = 315 + progress*(588 - 315)
+  console.log(progressPx)
+  return (
       <div className="container-horizontal">
     <p className="header-horizontal">
     New cases
@@ -57,12 +61,12 @@ const MapHorizontal = ({day, progress, startAnimation}) => (
     </div>
     <div className="timeline-box-horizontal">
 
-    <p className={`endDate-horizontal timelineDate-horizontal`}>Oct 15</p> //end date text
-    <p className={`startDate-horizontal timelineDate-horizontal`}>Mar 1</p>
+    <p className={`endDate-horizontal timelineDate-horizontal`}>{dayToDate(endDay, true)}</p>
+    <p className={`startDate-horizontal timelineDate-horizontal`}>{dayToDate(startDay, true)}</p>
 
       <img className={`static-horizontal timeline-horizontal`} src={process.env.PUBLIC_URL + "/horizontal-timeline.svg"} />
 
-      <div className={`dateBox-horizontal`} style={{left: progress + 'px'}}>
+      <div className={`dateBox-horizontal`} style={{top: progressPx + 'px'}}>
         <p className={'dateLabel-horizontal'}>{`${dayToDate(day, true)}`}</p>
       </div>
     </div>
@@ -72,6 +76,7 @@ const MapHorizontal = ({day, progress, startAnimation}) => (
 
       </div>
 
-);
+  )
+}
 
 export default MapHorizontal;

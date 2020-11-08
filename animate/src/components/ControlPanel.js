@@ -44,11 +44,11 @@ const MapSettingsForm = ({handleSubmit}) => {
         <Select
           name="assetType"
           id="asset-type-id"
-          options={['Animation', 'Static']}
+          options={['animation', 'static']}
         />
       </FormField>
       {
-        value.assetType === "Animation" ?
+        value.assetType === "animation" ?
       <div>
       <FormField name="startDate" htmlfor="start-date-id" label="Animation Start Date">
         <DateInput
