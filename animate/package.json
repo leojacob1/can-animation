@@ -19,7 +19,7 @@
     "fs": "0.0.1-security",
     "gif-encoder-2": "^1.0.5",
     "grommet": "^2.15.2",
-    "heroku": "^7.42.6",
+    "heroku": "^7.47.0",
     "lodash": "^4.17.20",
     "node-browserfs": "^3.0.1",
     "papaparse": "^5.2.0",
