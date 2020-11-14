@@ -4,6 +4,7 @@ import MapSquare from './MapSquare.js';
 import MapHorizontal from './MapHorizontal.js';
 import ControlPanel from './ControlPanel.js';
 import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
+import ScaleLoader from "react-spinners/ScaleLoader";
 import loadJson from '../scripts/loadJson';
 
 
@@ -23,20 +24,21 @@ class MapSelector extends React.Component {
       },
       isDataErr: false,
       data: null,
+      isDataLoading: false,
     }
   }
 
-  componentWillMount() {
+  handleFormSubmit(data) {
+    this.setState({ isDataLoading: true });
     loadJson((err, data) => {
       if (data) {
         this.setState({ data, isDataErr: false });
       } else if (err) {
         this.setState({ data: null, isDataErr: true });
       };
+      this.setState({ isDataLoading: false });
     })
-  }
 
-  handleFormSubmit(data) {
     var mar1 = new Date("03/01/2020");
     var startDate = new Date(data.startDate);
     var endDate = new Date(data.endDate)
@@ -100,15 +102,20 @@ class MapSelector extends React.Component {
         <ControlPanel
           handleSubmit={this.handleFormSubmit}
           startAnimation={this.state.formData.assetType === "animation" ? this.startAnimation : null}
+          isDataLoaded={!!this.state.data}
         />
         {this.state.isDataErr &&
           <Text color="red">Error loading data</Text>
         }
-        {this.state.data &&
-          <Text color="green">Data loaded successfully!</Text>
+        <ScaleLoader
+          size={50}
+          color={"#7D4CDB"}
+          loading={this.state.isDataLoading}
+        />
+        {this.state.isDataLoading &&
+          <Text>Map is loading...</Text>
         }
         </Box>
-
       </Box>
     )
   }

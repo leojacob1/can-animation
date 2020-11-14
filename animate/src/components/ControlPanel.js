@@ -26,21 +26,39 @@ const MapSettingsForm = ({handleSubmit}) => {
       onReset={() => setValue({})}
       onSubmit={({ value }) => {handleSubmit(value)}}
     >
-      <FormField name="dimension" htmlfor="dimension-id" label="Dimension">
+      <FormField name="dimension" htmlfor="dimension-id" label="Dimension" validate={(field) => {
+        if (field !== "horizontal" && field !== "square") {
+          return "Please choose a dimension";
+        }
+      }}>
         <Select
           name="dimension"
           id="dimension-id"
           options={['horizontal', 'square']}
         />
       </FormField>
-      <FormField name="dataType" htmlfor="asset-type-id" label="Data">
+      <FormField name="dataType" htmlfor="asset-type-id" label="Data" validate={(field) => {
+        if (!field) {
+          return "Select a data type";
+        }
+        if (field !== "Case Density") {
+          return "We can only support case density at this time :/";
+        }
+      }}>
         <Select
           name="dataType"
           id="data-type-id"
           options={['Case Density', 'Infection Rate', 'Hospitalizations', 'Deaths']}
         />
       </FormField>
-      <FormField name="assetType" htmlfor="asset-type-id" label="Asset Type">
+      <FormField name="assetType" htmlfor="asset-type-id" label="Asset Type" validate={(field) => {
+        if (!field) {
+          return "Select an asset type";
+        }
+        if (field !== "animation") {
+          return "We can only support animations at this time :/";
+        }
+      }}>
         <Select
           name="assetType"
           id="asset-type-id"
@@ -50,14 +68,28 @@ const MapSettingsForm = ({handleSubmit}) => {
       {
         value.assetType === "animation" ?
       <div>
-      <FormField name="startDate" htmlfor="start-date-id" label="Animation Start Date">
+      <FormField name="startDate" htmlfor="start-date-id" label="Animation Start Date" validate={(field) => {
+        if (!field) {
+          return "Select a start date";
+        }
+        if (field >= new Date().toJSON()) {
+          return "Please select an earlier start date.";
+        }
+      }}>
         <DateInput
           name="startDate"
           id="start-date-id"
           format="mm/dd/yyyy"
         />
       </FormField>
-      <FormField name="endDate" htmlfor="end-date-id" label="Animation End Date">
+      <FormField name="endDate" htmlfor="end-date-id" label="Animation End Date" validate={(field, form) => {
+        if (!field) {
+          return "Select a start date";
+        }
+        if (field >= new Date().toJSON() || field <= form.startDate) {
+          return "Please select an end date prior to your start date.";
+        }
+      }}>
         <DateInput
           name="endDate"
           id="end-date-id"
@@ -74,7 +106,7 @@ const MapSettingsForm = ({handleSubmit}) => {
   )
 }
 
-const ControlPanel = ({handleSubmit, startAnimation}) => (
+const ControlPanel = ({handleSubmit, startAnimation, isDataLoaded}) => (
   <Grommet theme={theme}>
     <Box
       direction="column"
@@ -83,8 +115,11 @@ const ControlPanel = ({handleSubmit, startAnimation}) => (
       width="medium"
     >
       <MapSettingsForm handleSubmit={handleSubmit}/>
-      {startAnimation &&
-        <Button primary label="Start Animation" margin="medium" onClick={() => startAnimation()} />
+      {isDataLoaded &&
+        <Box direction="column">
+          <Button primary label="Start animation" margin="medium" onClick={() => startAnimation()} />
+          <Text>Or click anywhere on the map</Text>
+        </Box>
       }
     </Box>
   </Grommet>

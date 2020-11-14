@@ -37,15 +37,16 @@ function countyColor(day, countyid, COUNTY_DATA) {
 
   var gradient = tinygradient([
     {color: '#00d474', pos: 0},
-    {color: '#ffc900', pos: 0.04},
-    {color: '#ff9600', pos: 0.4},
-    {color: '#ff0034', pos: 1}
+    {color: '#ffc900', pos: 0.01},
+    {color: '#ff9600', pos: 0.1},
+    {color: '#ff0034', pos: 0.25},
+    {color: '#42010b', pos: 1}
   ]);
 
   if (!newCaseDensityTrailingAverage) {
     return '#00d474';
   }
-  var gradientPercent = newCaseDensityTrailingAverage / 25;
+  var gradientPercent = newCaseDensityTrailingAverage / 100;
   if (gradientPercent > 1) {
     gradientPercent = 1;
   } else if (gradientPercent < 0) {
