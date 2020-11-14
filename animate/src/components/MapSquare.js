@@ -10,8 +10,8 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapSquare = ({day, progress, startDay, endDay}) => (
-      <div className="container">
+const MapSquare = ({day, progress, startDay, endDay, startAnimation, data}) => (
+      <div className="container" onClick={() => startAnimation()}>
     <p className="header">
     New cases
     </p>
@@ -28,7 +28,7 @@ const MapSquare = ({day, progress, startDay, endDay}) => (
         {({ geographies }) =>
           geographies.map(geo => {
             return (
-              <County geo={geo} day={day} />
+              <County geo={geo} day={day} data={data} />
             );
           })
         }

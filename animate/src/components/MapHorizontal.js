@@ -10,12 +10,11 @@ import STATES_JSON from '../data/states-10m.json';
 
 
 
-const MapHorizontal = ({day, progress, startDay, endDay}) => {
-  console.log(progress)
+const MapHorizontal = ({ day, progress, startDay, endDay, startAnimation, data }) => {
   let progressPx = 315 + progress*(588 - 315)
-  console.log(progressPx)
+  
   return (
-      <div className="container-horizontal">
+      <div className="container-horizontal" onClick={() => startAnimation()}>
     <p className="header-horizontal">
     New cases
     </p>
@@ -35,7 +34,7 @@ const MapHorizontal = ({day, progress, startDay, endDay}) => {
         {({ geographies }) =>
           geographies.map(geo => {
             return (
-              <County geo={geo} day={day} />
+              <County geo={geo} day={day} data={data}/>
             );
           })
         }

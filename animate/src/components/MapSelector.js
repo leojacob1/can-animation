@@ -4,7 +4,7 @@ import MapSquare from './MapSquare.js';
 import MapHorizontal from './MapHorizontal.js';
 import ControlPanel from './ControlPanel.js';
 import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
-
+import loadJson from '../scripts/loadJson';
 
 
 class MapSelector extends React.Component {
@@ -20,8 +20,20 @@ class MapSelector extends React.Component {
         dataType: null,
         startDate: null,
         endDate: null
-      }
+      },
+      isDataErr: false,
+      data: null,
     }
+  }
+
+  componentWillMount() {
+    loadJson((err, data) => {
+      if (data) {
+        this.setState({ data, isDataErr: false });
+      } else if (err) {
+        this.setState({ data: null, isDataErr: true });
+      };
+    })
   }
 
   handleFormSubmit(data) {
@@ -48,7 +60,7 @@ class MapSelector extends React.Component {
         } else {
           clearInterval(this.myInterval);
         }
-      }, 10)
+      }, 200)
     }
   }
 
@@ -63,29 +75,41 @@ class MapSelector extends React.Component {
 
 
     return (
-      <div>
-          {this.state.formData.dimension === "square" &&
+      <Box direction="row" justify="start">
+          {(this.state.formData.dimension === "square" && this.state.data) &&
             <MapSquare
               day={this.state.day}
               progress={progress}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
+              startAnimation={this.startAnimation}
+              data={this.state.data}
             />
           }
-          {this.state.formData.dimension === "horizontal" &&
+          {(this.state.formData.dimension === "horizontal"  && this.state.data) &&
             <MapHorizontal
               day={this.state.day}
               progress={progress}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
+              startAnimation={this.startAnimation}
+              data={this.state.data}
             />
           }
+          <Box direction="column" align="center" alignSelf="start">
         <ControlPanel
           handleSubmit={this.handleFormSubmit}
           startAnimation={this.state.formData.assetType === "animation" ? this.startAnimation : null}
         />
+        {this.state.isDataErr &&
+          <Text color="red">Error loading data</Text>
+        }
+        {this.state.data &&
+          <Text color="green">Data loaded successfully!</Text>
+        }
+        </Box>
 
-      </div>
+      </Box>
     )
   }
 }
