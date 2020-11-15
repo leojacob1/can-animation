@@ -1,10 +1,8 @@
-// import COUNTY_DATA from '../data/county-history-data.json';
 import dayToDate from './dayToDate.js';
 import tinygradient from 'tinygradient';
 
 
 function countyColor(day, countyid, COUNTY_DATA) {
-
   var fillColor;
   const trailingDates = [dayToDate(day-6), dayToDate(day-5), dayToDate(day-4), dayToDate(day-3), dayToDate(day-2), dayToDate(day-1), dayToDate(day)]
 

@@ -4,14 +4,17 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import countyColor from '../scripts/countyColor.js';
 
 
-const County = ({geo, day, data}) => (
+const County = ({geo, geoId, day, data}) => (
   <Geography
     key={geo.rsmKey}
     geography={geo}
-    fill={countyColor(day, geo.id, data)}
+    fill={countyColor(day, geoId, data)}
     stroke="white"
-    strokeWidth={0.3}
+    strokeWidth={0.5}
+    strokeOpacity={1}
   />
 );
+
+
 
 export default County;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
+import STATES from '../data/us_state_centers.js';
 
 const theme = {
   global: {
@@ -98,6 +99,31 @@ const MapSettingsForm = ({handleSubmit}) => {
       </FormField>
       </div>
       : null }
+      <FormField name="geographyType" htmlfor="geography-type-id" label="Animation Geography" validate={(field) => {
+        if (!field) {
+          return "Select a geography"
+        }
+      }}>
+        <Select
+          name="geographyType"
+          id="geography-type-id"
+          options={['Full USA', 'Single state']}
+        />
+      </FormField>
+      {
+        value.geographyType === "Single state" &&
+        <FormField name="state" htmlfor="state-id" label="State" validate={(field) => {
+          if (!field) {
+            return "Select a state"
+          }
+        }}>
+          <Select
+            name="state"
+            id="state-id"
+            options={Object.keys(STATES)}
+          />
+        </FormField>
+      }
       <Box direction="row" gap="medium">
         <Button type="submit" primary label="Submit" />
         <Button type="reset" label="Reset" />

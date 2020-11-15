@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MapSquare from './MapSquare.js';
-import MapHorizontal from './MapHorizontal.js';
+import MapSquareContainer from './MapSquareContainer.js';
+import MapHorizontalContainer from './MapHorizontalContainer.js';
 import ControlPanel from './ControlPanel.js';
 import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
 import ScaleLoader from "react-spinners/ScaleLoader";
@@ -79,23 +79,25 @@ class MapSelector extends React.Component {
     return (
       <Box direction="row" justify="start">
           {(this.state.formData.dimension === "square" && this.state.data) &&
-            <MapSquare
+            <MapSquareContainer
               day={this.state.day}
               progress={progress}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
               startAnimation={this.startAnimation}
               data={this.state.data}
+              state={this.state.formData.state ? this.state.formData.state : null}
             />
           }
           {(this.state.formData.dimension === "horizontal"  && this.state.data) &&
-            <MapHorizontal
+            <MapHorizontalContainer
               day={this.state.day}
               progress={progress}
               startDay={this.state.startDay}
               endDay={this.state.endDay}
               startAnimation={this.startAnimation}
               data={this.state.data}
+              state={this.state.formData.state ? this.state.formData.state : null}
             />
           }
           <Box direction="column" align="center" alignSelf="start">
