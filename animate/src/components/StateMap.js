@@ -4,12 +4,15 @@ import County from './County';
 import STATE_CENTERS from '../data/us_state_centers';
 
 
-const StateMap = ({state, day, isHorizontal, data}) => {
-  const COUNTIES_JSON = require(`../data/countyTopoJson/${state}.json`);
-  const state_center = STATE_CENTERS[state];
+const StateMap = ({stateAbbrv, day, isHorizontal, data}) => {
+  const COUNTIES_JSON = require(`../data/countyTopoJson/${stateAbbrv}.json`);
+  const stateInfo = STATE_CENTERS[stateAbbrv];
   return (
-  <ComposableMap className={isHorizontal ? "map-horizontal" : "map"} data-tip="" projection="geoMercator" projectionConfig={{scale: 5500}}>
-    <ZoomableGroup center={[state_center.Longitude, state_center.Latitude]} disablePanning={true}>
+  <ComposableMap className={`${isHorizontal ? "map-horizontal" : "map"} state-map`} data-tip="" projection="geoMercator" style={{marginTop: "100px"}}projectionConfig={{
+    roatation: stateInfo.rotate ? stateInfo.rotate: null,
+    scale: stateInfo.scale ? stateInfo.scale : 4000,
+  }}>
+    <ZoomableGroup center={[stateInfo.Longitude, stateInfo.Latitude]}>
     <Geographies geography={COUNTIES_JSON}>
       {({ geographies }) =>
         geographies.map(geo => {

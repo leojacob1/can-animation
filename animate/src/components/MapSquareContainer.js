@@ -16,7 +16,7 @@ const MapSquareContainer = ({day, progress, startDay, endDay, startAnimation, da
     <img className="color-key" src={process.env.PUBLIC_URL + "/horizontal-color-key.svg"} />
 
     {state &&
-    <StateMap state={state} day={day} isHorizontal={false} data={data}/>
+    <StateMap stateAbbrv={state} day={day} isHorizontal={false} data={data}/>
     }
     {!state &&
     <FullMap day={day} isHorizontal={false} data={data}/>

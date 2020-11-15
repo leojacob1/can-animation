@@ -22,7 +22,7 @@ const MapHorizontalContainer = ({ day, progress, startDay, endDay, startAnimatio
     <p className={`one threshold`}>1</p>
     <p className={`per100k`}>per 100k</p>
     {state &&
-    <StateMap state={state} day={day} isHorizontal={true} data={data}/>
+    <StateMap stateAbbrv={state} day={day} isHorizontal={true} data={data}/>
     }
     {!state &&
     <FullMap day={day} isHorizontal={true} data={data}/>
