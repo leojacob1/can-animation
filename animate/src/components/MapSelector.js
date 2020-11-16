@@ -77,7 +77,7 @@ class MapSelector extends React.Component {
 
 
     return (
-      <Box direction="row" justify="start">
+      <Box direction="row" justify="between">
           {(this.state.formData.dimension === "square" && this.state.data) &&
             <MapSquareContainer
               day={this.state.day}

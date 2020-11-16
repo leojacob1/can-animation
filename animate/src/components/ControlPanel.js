@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grommet, Box, Select, Text, Form, FormField, DateInput, Button } from 'grommet';
 import STATES from '../data/us_state_centers.js';
+import '../styles/ControlPanel.css';
 
 const theme = {
   global: {
@@ -136,9 +137,11 @@ const ControlPanel = ({handleSubmit, startAnimation, isDataLoaded}) => (
   <Grommet theme={theme}>
     <Box
       direction="column"
-      border={{ color: 'brand', size: 'large' }}
+      border={{ color: 'brand', size: 'small' }}
       pad="large"
-      width="medium"
+      className="container-control"
+      margin="small"
+      responsive={true}
     >
       <MapSettingsForm handleSubmit={handleSubmit}/>
       {isDataLoaded &&

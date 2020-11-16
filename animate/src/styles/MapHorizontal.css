@@ -222,6 +222,7 @@
 }
 
 .container-horizontal {
+  zoom: 0.6;
   float: left;
   position: relative;
   width: 1600px;
