@@ -62,7 +62,7 @@ class MapSelector extends React.Component {
         } else {
           clearInterval(this.myInterval);
         }
-      }, 200)
+      }, 500)
     }
   }
 

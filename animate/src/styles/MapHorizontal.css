@@ -50,74 +50,16 @@
 }
 
 .color-key-horizontal {
-  display: flex;
-  flex-direction: column;
   padding: 0px;
 
-  position: absolute;
-  width: 32px;
-  height: 288px;
-  left: 1447px;
+  position: relative;
+  width: 5%;
+  height: auto;
+  left: 40%;
   top: 340px;
 
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  /* transform: matrix(-1, 0, 0, 1, 0, 0); */
 }
-
-.threshold {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  left: 1496px;
-  top: 373px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-  text-transform: uppercase;
-
-  /* White */
-
-  color: #FFFFFF;
-}
-
-.ten {
-  top: 445px;
-}
-
-.one {
-  top: 517px;
-}
-
-.per100k {
-  position: absolute;
-  width: 88px;
-  height: 23px;
-  left: 1419px;
-  top: 627px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 23px;
-  text-transform: uppercase;
-
-  /* Grey 2 */
-
-  color: #E0E0E0;
-}
-
-/* .date {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 5em;
-  line-height: 47px;
-  margin-top: -1.5em;
-  margin-bottom: 1.5em;
-  color: #4388f7;
-} */
 
 .timeline-horizontal {
   position: absolute;

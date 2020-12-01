@@ -17,10 +17,6 @@ const MapHorizontalContainer = ({ day, progress, startDay, endDay, startAnimatio
     per 100k people
     </p>
     <img className="color-key-horizontal" src={process.env.PUBLIC_URL + "/vertical-color-key.svg"} />
-    <p className={`twentyfive threshold`}>25</p>
-    <p className={`ten threshold`}>10</p>
-    <p className={`one threshold`}>1</p>
-    <p className={`per100k`}>per 100k</p>
     {state &&
     <StateMap stateAbbrv={state} day={day} isHorizontal={true} data={data}/>
     }

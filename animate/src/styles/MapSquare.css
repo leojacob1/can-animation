@@ -99,7 +99,7 @@ color: #4388f7;
 
 .timelineDate {
   position: absolute;
-  width: 66px;
+  width: 70px;
   height: 23px;
   top: 1205px;
 
@@ -118,7 +118,7 @@ color: #4388f7;
 }
 
 .startDate {
-  left: 78px;
+  left: 63px;
   text-align: right;
 
 }

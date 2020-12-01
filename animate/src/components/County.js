@@ -10,7 +10,7 @@ const County = ({geo, geoId, day, data}) => (
     geography={geo}
     fill={countyColor(day, geoId, data)}
     stroke="white"
-    strokeWidth={0.5}
+    strokeWidth={0.1}
     strokeOpacity={1}
   />
 );

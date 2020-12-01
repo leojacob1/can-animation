@@ -25,7 +25,7 @@ const FullMap = ({day, isHorizontal, data}) => (
           geography={geo}
           fill="teal"
           stroke="white"
-          strokeWidth={0.5}
+          strokeWidth={1}
           fillOpacity={0}
           strokeOpacity={1}
           />
